@@ -1,0 +1,269 @@
+Mon Oct 07 09:24:25 EDT 2019: HELLO
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:24:33 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:24:33 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:24:33 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLA211019,Surgeon,1)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:24:33 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:24:33 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLE241019,Dental,2)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:24:33 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:24:33 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:24:33 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: true
+
+Mon Oct 07 09:24:59 EDT 2019: REQUEST at MTL Hosp.: listAppointmentAvailability(Surgeon)
+Mon Oct 07 09:24:59 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:24:59 EDT 2019: GATHERING INFO at MTL Hosp.: listAppointmentAvailability(Surgeon)
+Mon Oct 07 09:25:00 EDT 2019: GATHERING INFO at SHE Hosp.: listAppointmentAvailability(Surgeon)
+Mon Oct 07 09:25:00 EDT 2019: GATHERING INFO at QUE Hosp.: listAppointmentAvailability(Surgeon)
+Mon Oct 07 09:25:00 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: true
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:33:37 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:33:37 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:33:37 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLA211019,Surgeon,1)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:33:37 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:33:37 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLE241019,Dental,2)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:33:37 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:33:37 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:33:37 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:33:37 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:34:07 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:34:07 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:34:07 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLA211019,Surgeon,1)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:34:07 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:34:07 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLE241019,Dental,2)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:34:07 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:34:07 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:34:07 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:34:07 EDT 2019: appointment already exists
+
+Mon Oct 07 09:34:47 EDT 2019: REQUEST at MTL Hosp.: bookAppointment(MTLP1234, SHEA241019, Surgeon)
+Mon Oct 07 09:34:47 EDT 2019: VALIDATING BOOKING with respect to all cities
+Mon Oct 07 09:34:47 EDT 2019: GATHERING INFO at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:34:47 EDT 2019: GATHERING INFO at SHE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:34:47 EDT 2019: GATHERING INFO at QUE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:34:47 EDT 2019: BOOKING REQUEST valid
+Mon Oct 07 09:34:47 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:34:47 EDT 2019: REQUEST at SHE Hosp.: bookAppointment(MTLP1234, SHEA241019, Surgeon)
+Mon Oct 07 09:34:47 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:34:47 EDT 2019: appointment does not exists
+
+Mon Oct 07 09:34:47 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: true
+
+Mon Oct 07 09:35:16 EDT 2019: REQUEST at MTL Hosp.: bookAppointment(MTLP1234, SHEM141019, Surgeon)
+Mon Oct 07 09:35:16 EDT 2019: VALIDATING BOOKING with respect to all cities
+Mon Oct 07 09:35:16 EDT 2019: GATHERING INFO at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:35:16 EDT 2019: GATHERING INFO at SHE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:35:16 EDT 2019: GATHERING INFO at QUE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:35:16 EDT 2019: BOOKING REQUEST valid
+Mon Oct 07 09:35:16 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:35:16 EDT 2019: REQUEST at SHE Hosp.: bookAppointment(MTLP1234, SHEM141019, Surgeon)
+Mon Oct 07 09:35:16 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: true
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:37:08 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:37:08 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:37:08 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLA211019,Surgeon,1)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:37:08 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:37:08 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLE241019,Dental,2)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:37:08 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:37:08 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:37:08 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:37:08 EDT 2019: appointment already exists
+
+Mon Oct 07 09:37:20 EDT 2019: REQUEST at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:37:20 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:37:20 EDT 2019: GATHERING INFO at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:37:20 EDT 2019: GATHERING INFO at SHE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:37:20 EDT 2019: GATHERING INFO at QUE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:37:20 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: true
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:39:02 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM141019,Surgeon,2)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:39:02 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEA161019,Dental,2)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:39:02 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEE181019,Physician,2)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLA211019,Surgeon,1)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:39:02 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEM221019,Dental,2)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:39:02 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at QUE Hosp.: addAppointement(QUEM231019,Physician,5)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at QUE Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(MTLE241019,Dental,2)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at MTL Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:39:02 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:02 EDT 2019: REQUEST at SHE Hosp.: addAppointement(SHEA251019,Surgeon,2)
+Mon Oct 07 09:39:02 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: false,
+Mon Oct 07 09:39:02 EDT 2019: appointment already exists
+
+Mon Oct 07 09:39:10 EDT 2019: REQUEST at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:10 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:10 EDT 2019: GATHERING INFO at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:10 EDT 2019: GATHERING INFO at SHE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:10 EDT 2019: GATHERING INFO at QUE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:10 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: true
+
+Mon Oct 07 09:39:26 EDT 2019: REQUEST at MTL Hosp.: cancelAppointment(MTLP1234,SHEM141019)
+Mon Oct 07 09:39:26 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:26 EDT 2019: REQUEST at SHE Hosp.: cancelAppointment(MTLP1234,SHEM141019)
+Mon Oct 07 09:39:26 EDT 2019: COMPLETED REQUEST at SHE Hosp. Request RESULT: true
+
+Mon Oct 07 09:39:30 EDT 2019: REQUEST at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:30 EDT 2019: CONNECTING REQUEST to different hospital(s), from MTL
+Mon Oct 07 09:39:30 EDT 2019: GATHERING INFO at MTL Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:30 EDT 2019: GATHERING INFO at SHE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:30 EDT 2019: GATHERING INFO at QUE Hosp.: getAppointmentSchedule(MTLP1234)
+Mon Oct 07 09:39:30 EDT 2019: COMPLETED REQUEST at MTL Hosp. Request RESULT: true
+

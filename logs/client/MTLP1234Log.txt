@@ -1,0 +1,16 @@
+Mon Oct 28 00:29:15 EDT 2019: HELLO
+Mon Oct 28 00:29:18 EDT 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
+Mon Oct 28 00:29:18 EDT 2019: SERVER RESULT RESPONSE: 
+Mon Oct 28 00:29:18 EDT 2019: Surgeon Appointment(s): []
+Mon Oct 28 00:29:18 EDT 2019: Dental Appointment(s): [MTLM271019]
+Mon Oct 28 00:29:18 EDT 2019: Physician Appointment(s): []
+
+Mon Oct 28 00:29:37 EDT 2019: SENDING REQUEST: swapAppointment (MTLP1234, MTLM271019, Dental, SHEA281019, Physician) by MTLP1234
+Mon Oct 28 00:29:37 EDT 2019: SERVER RESULT RESPONSE: true
+
+Mon Oct 28 00:29:44 EDT 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
+Mon Oct 28 00:29:44 EDT 2019: SERVER RESULT RESPONSE: 
+Mon Oct 28 00:29:44 EDT 2019: Surgeon Appointment(s): []
+Mon Oct 28 00:29:44 EDT 2019: Dental Appointment(s): []
+Mon Oct 28 00:29:44 EDT 2019: Physician Appointment(s): [SHEA281019]
+

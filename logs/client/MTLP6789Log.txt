@@ -1,0 +1,7 @@
+Mon Oct 07 16:03:25 EDT 2019: HELLO
+Mon Oct 07 16:03:30 EDT 2019: SENDING REQUEST: getAppointmentSchedule(MTLP6789) by MTLP6789
+Mon Oct 07 16:03:30 EDT 2019: SERVER RESULT RESPONSE: 
+Mon Oct 07 16:03:30 EDT 2019: Surgeon Appointment(s): []
+Mon Oct 07 16:03:30 EDT 2019: Dental Appointment(s): [QUEM191019]
+Mon Oct 07 16:03:30 EDT 2019: Physician Appointment(s): []
+
