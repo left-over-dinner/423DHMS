@@ -22,7 +22,7 @@ public class Client {
             //-ORBInitialPort 1050 -ORBInitialHost localhost
             org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
             NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-            return (hospitalModule.Hospital) HospitalHelper.narrow(ncRef.resolve_str(ClientUtil.getHospName(clientId)));
+            return (hospitalModule.Hospital) HospitalHelper.narrow(ncRef.resolve_str("DHMSFrontend"));
         }catch (Exception e){
             e.printStackTrace();
         }

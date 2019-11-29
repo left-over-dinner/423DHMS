@@ -15,7 +15,7 @@ public class AdminClient extends Client {
         this. adminId = adminId;
         scanner = new Scanner(System.in);
         logger = getLogger(adminId);
-        System.out.println("Connecting to "+ClientUtil.getHospName(adminId));
+        System.out.println("Connecting to DHMS for "+ClientUtil.getHospName(adminId));
         hospital = createIDLHospitalConn(adminId);
         System.out.println("Connection Successful\n");
     }
@@ -76,6 +76,10 @@ public class AdminClient extends Client {
         String appointmentId = getAppointmentId(scanner,"Please enter the appointment id (date format ddmmyy): ");
         String appointmentType = getAppointmentType(scanner,"Please enter the appointment type (Surgeon, Dental or Physician): ");
         int capacity = getNumber(scanner,"Please enter a valid capacity (0 to 100): ",100);
+        if(!ClientUtil.sameHospital(adminId,appointmentId)){
+            System.out.println("Server Response: false, appointment not for "+ClientUtil.getHospName(adminId));
+            return;
+        }
         try{
             logger.info(reqLogSending()+"addAppointment("+appointmentId+","+appointmentType+","+capacity+") by "+adminId);
             String result = hospital.addAppointment(appointmentId,appointmentType,capacity);
@@ -89,6 +93,10 @@ public class AdminClient extends Client {
         System.out.println("removeAppointment(appointmentId, appointmentType)");
         String appointmentId = getAppointmentId(scanner,"Please enter the appointment id (date format ddmmyy): ");
         String appointmentType = getAppointmentType(scanner,"Please enter the appointment type (Surgeon, Dental or Physician): ");
+        if(!ClientUtil.sameHospital(adminId,appointmentId)){
+            System.out.println("Server Response: false, appointment not for "+ClientUtil.getHospName(adminId));
+            return;
+        }
         try{
             logger.info(reqLogSending()+"removeAppointment("+appointmentId+","+appointmentType+") by "+adminId);
             String result = hospital.removeAppointment(appointmentId,appointmentType);

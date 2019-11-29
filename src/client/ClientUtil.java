@@ -22,6 +22,12 @@ public class ClientUtil {
         if(clientId.contains("SHE")) return 2525;
         return 0;
     }
+    public static boolean sameHospital(String id1,String id2){
+        if(id1.contains("MTL") && id2.contains("MTL")) return true;
+        if(id1.contains("QUE") && id2.contains("QUE")) return true;
+        if(id1.contains("SHE") && id2.contains("SHE")) return true;
+        return false;
+    }
     public static boolean isValidApptId(String appointmentId){
         //return appointmentId.matches("(MTL|SHE|QUE){1}(M|A|E)[0-9]{6}");
         return true;

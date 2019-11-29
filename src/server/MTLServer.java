@@ -9,7 +9,7 @@ import java.rmi.registry.Registry;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
-public class MTLServer {
+public class MTLServer extends Thread {
     private static DatagramSocket socket;
     private static Logger logger;
     private static FileHandler fh;
@@ -27,7 +27,7 @@ public class MTLServer {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args){
+    public static void run(String[] args){
         try{
             udpProcessor = new UDPProcessor();
             //MTLHosp

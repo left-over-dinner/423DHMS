@@ -15,7 +15,7 @@ public class PatientClient extends Client {
         this.patientId = patientId;
         scanner = new Scanner(System.in);
         logger = getLogger(patientId);
-        System.out.println("Connecting to "+ClientUtil.getHospName(patientId));
+        System.out.println("Connecting to DHMS for "+ClientUtil.getHospName(patientId));
         hospital = createIDLHospitalConn(patientId);
         System.out.println("Connection Successful\n");
     }

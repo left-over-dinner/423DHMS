@@ -1,9 +1,10 @@
 package hospitalUtil;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CapacitySlots {
+public class CapacitySlots implements Serializable {
     private int latestId;
     private List<Slot> slots = new ArrayList<Slot>();
 

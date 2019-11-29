@@ -2,6 +2,7 @@ package hospitalUtil;
 
 import hospitalModule.HospitalPOA;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -11,15 +12,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-public class HospitalServer extends HospitalPOA {
+public class HospitalServer implements Hospital, Serializable {
     private String id;
     private HashMap<String, HashMap<String,CapacitySlots>> database = new HashMap<String, HashMap<String,CapacitySlots>>();
-    private Logger logger;
+    private static final Logger logger = Logger.getLogger("DHMS");;
 
-    public HospitalServer(String id) throws RemoteException {
+    public HospitalServer(String id) {
         super();
         this.id=id;
-        logger = Logger.getLogger("DHMS");
         //For a new server, initiate default database
         database.put("Physician", new HashMap<String,CapacitySlots>());
         database.put("Surgeon", new HashMap<String,CapacitySlots>());
@@ -60,13 +60,6 @@ public class HospitalServer extends HospitalPOA {
     @Override
     public synchronized String addAppointment(String appointmentID, String appointmentType, int capacity) {
         logger.info(logReqHeader()+" addAppointement("+appointmentID+","+appointmentType+","+capacity+")");
-        if(!isCorrectHospital(appointmentID)) {
-            //logger.info(this.logReqConnecting());
-            //return UDPCall("addAppointment@"+appointmentID+"@"+appointmentType+"@"+capacity+"@");
-            logger.info(this.logReqComplete()+" false,");
-            logger.info("appointment is not for "+id+" Hospital");
-            return "false, appointment is not for "+id+" Hospital";
-        }
         HashMap<String, CapacitySlots> timeSlots = getTimeSlots(appointmentType);
         if(timeSlots.get(appointmentID)!=null) {
             logger.info(this.logReqComplete()+" false,");
@@ -92,13 +85,6 @@ public class HospitalServer extends HospitalPOA {
     @Override
     public synchronized String removeAppointment(String appointmentID, String appointmentType) {
         logger.info(logReqHeader()+" removeAppointment("+appointmentID+","+appointmentType+")");
-        if(!isCorrectHospital(appointmentID)) {
-            //logger.info(this.logReqConnecting());
-            //return UDPCall("removeAppointment@"+appointmentID+"@"+appointmentType+"@", determinePortNumber(appointmentID));
-            logger.info(this.logReqComplete()+" false,");
-            logger.info("appointment is not for "+id+" Hospital");
-            return "false, appointment is not for "+id+" Hospital";
-        }
         HashMap<String, CapacitySlots> timeSlots = getTimeSlots(appointmentType);
         //initially the appointment has never existed
         if (timeSlots.get(appointmentID) == null ) {
@@ -130,17 +116,14 @@ public class HospitalServer extends HospitalPOA {
     public synchronized String listAppointmentAvailability(String appointmentType) {
         logger.info(this.logReqHeader()+" listAppointmentAvailability("+appointmentType+")");
         logger.info(this.logReqConnecting());
-        String result = UDPCall("listAppointmentAvailability@"+appointmentType+"@",determinePortNumber("MTL"));
-        result += UDPCall("listAppointmentAvailability@"+appointmentType+"@",determinePortNumber("SHE"));
-        result += UDPCall("listAppointmentAvailability@"+appointmentType+"@",determinePortNumber("QUE"));
+        String result =listAppointmentAvailabilityHosp(appointmentType);
         logger.info(logReqComplete()+" true\n");
         return result;
     }
-    private String[] validBookingRequest(String patientID, String appointmentID, String appointmentType){
+    private String[] validBookingRequest(String patientID, String appts,String appointmentID, String appointmentType){
         String[] result = new String[2];
         result[0]="true";
         result[1]="result here";
-        String appts = getScheduleAll(patientID);
         result = RequestUtil.validate(appts, patientID,appointmentID,appointmentType);
         //System.out.println(appts);
         return result;
@@ -167,10 +150,10 @@ public class HospitalServer extends HospitalPOA {
         return result;
     }
     @Override
-    public synchronized String bookAppointment(String patientID, String appointmentID, String appointmentType) {
+    public synchronized String bookAppointment(String patientID, String appts, String appointmentID, String appointmentType) {
         logger.info(logReqHeader()+" bookAppointment("+patientID+", "+appointmentID+", "+appointmentType+")");
         logger.info(logReqValidating());
-        String[] responceValidRequest = validBookingRequest(patientID, appointmentID, appointmentType);
+        String[] responceValidRequest = validBookingRequest(patientID, appts, appointmentID, appointmentType);
         if(responceValidRequest[0].equals("false")){
             logger.info(logReqInvalid());
             logger.info(logReqComplete()+"false,");
@@ -178,10 +161,6 @@ public class HospitalServer extends HospitalPOA {
             return "false, "+responceValidRequest[1];
         }
         logger.info(logReqValid());
-        if(!isCorrectHospital(appointmentID)) {
-            logger.info(this.logReqConnecting());
-            return UDPCall("bookAppointment@" + patientID + "@" + appointmentID + "@" + appointmentType + "@", determinePortNumber(appointmentID));
-        }
         String result = bindBookingAppt(patientID, appointmentID, appointmentType);
         logger.info(logReqComplete()+" true\n");
         return result;
@@ -207,19 +186,13 @@ public class HospitalServer extends HospitalPOA {
         scheduleOverall+=getScheduleForTimeSlots(timeSlotsPhysician,patientID)+";\n";
         return scheduleOverall;
     }
-    private synchronized String getScheduleAll(String patientID){
-        String result = UDPCall("getAppointmentSchedule@"+patientID+"@", determinePortNumber("MTL"));
-        result += UDPCall("getAppointmentSchedule@"+patientID+"@", determinePortNumber("SHE"));
-        result += UDPCall("getAppointmentSchedule@"+patientID+"@", determinePortNumber("QUE"));
-        return result;
-    }
     @Override
     public synchronized String getAppointmentSchedule(String patientID) {
         logger.info(logReqHeader()+" getAppointmentSchedule("+patientID+")");
         logger.info(logReqConnecting());
-        String result = getScheduleAll(patientID);
+        String result = getAppointmentScheduleHops(patientID);
         logger.info(logReqComplete()+" true\n");
-        result  = RequestUtil.prettyPrintSchedule(result);
+        //result  = RequestUtil.prettyPrintSchedule(result);
         return result;
 
     }
@@ -240,10 +213,6 @@ public class HospitalServer extends HospitalPOA {
     @Override
     public synchronized String cancelAppointment(String patientID, String appointmentID) {
         logger.info(logReqHeader()+" cancelAppointment("+patientID+","+appointmentID+")");
-        if(!isCorrectHospital(appointmentID)) {
-            logger.info(logReqConnecting());
-            return UDPCall("cancelAppointment@"+patientID+"@"+appointmentID+"@", determinePortNumber(appointmentID));
-        }
         boolean result = false;
         HashMap<String, CapacitySlots> timeSlotsDental = getTimeSlots("Dental");
         if (cancelAppForTimeSlots(timeSlotsDental,patientID,appointmentID)) result = true;
@@ -260,7 +229,7 @@ public class HospitalServer extends HospitalPOA {
         return "true";
     }
     private boolean apptAlreadyBookedByPatient(String patientID, String appointmentID, String appointmentType){
-        String schedule = getScheduleAll(patientID);
+        String schedule = getAppointmentScheduleHops(patientID);
         System.out.println(schedule);
         return RequestUtil.appointmentAlreadyBooked(schedule,appointmentID,appointmentType);
     }
@@ -278,22 +247,16 @@ public class HospitalServer extends HospitalPOA {
         return "true";
     }
     public boolean appointmentAvailable(String appointmentID, String appointmentType){
-        if(!isCorrectHospital(appointmentID)){
-            System.out.println("MAKING UDP CALL");
-            String result = UDPCall("appointmentAvailable@"+appointmentID+"@"+appointmentType+"@", determinePortNumber(appointmentID));
-            if(result.contains("false")) return false;
-            return true;
-        }
         String result = appointmentAvailableHosp(appointmentID,appointmentType);
         if(result.contains("false")) return false;
         return true;
     }
     @Override
-    public String swapAppointment (String patientID, String oldAppointmentID, String oldAppointmentType, String newAppointmentID, String newAppointmentType){
+    public String swapAppointment (String patientID, String appts, String oldAppointmentID, String oldAppointmentType, String newAppointmentID, String newAppointmentType){
         //check old and new appointment are already booked by patient
         if(!apptAlreadyBookedByPatient(patientID,oldAppointmentID,oldAppointmentType)) return "false, old appointment is not booked by patient";
         //check if new booking is valid (max 3 appointments in different city, no same type of appointment in same day, etc)
-        String[] responseValidRequest = validBookingRequest(patientID, newAppointmentID, newAppointmentType);
+        String[] responseValidRequest = validBookingRequest(patientID, appts, newAppointmentID, newAppointmentType);
         if(responseValidRequest[0].equals("false")) return "false, "+responseValidRequest[1];
         //check new booking appointment exists and not full
         if(!appointmentAvailable(newAppointmentID,newAppointmentType)) return "false, new appointment does not exists or is already full";
@@ -301,40 +264,12 @@ public class HospitalServer extends HospitalPOA {
         String cancelRes = cancelAppointment(patientID,oldAppointmentID);
         if(cancelRes.contains("false")) return cancelRes;
         //book new appointment
-        String bookingRes = bookAppointment(patientID,newAppointmentID,newAppointmentType);
+        String bookingRes = bookAppointment(patientID, appts, newAppointmentID,newAppointmentType);
         if(bookingRes.contains("false")){
             //rebook appointment
-            bookAppointment(patientID,oldAppointmentID,oldAppointmentType);
+            bookAppointment(patientID, appts, oldAppointmentID,oldAppointmentType);
             return "false, unable to book new appt. after cancelling old appt. Rebooked old appt.";
         }
         return "true";
-    }
-    private int determinePortNumber (String id){
-        if(id.contains("MTL")) return 1231;
-        if(id.contains("QUE")) return 1232;
-        if(id.contains("SHE")) return 1233;
-        System.out.println("Returning 0 port");
-        return 0;
-    }
-    private synchronized String UDPCall(String params, int portNumber){
-        String reply_msg = "";
-        try{
-            DatagramSocket socket = new DatagramSocket();
-            byte[] message = params.getBytes();
-            InetAddress host = InetAddress.getByName("localhost");
-            int serverPort = portNumber;
-            DatagramPacket request = new DatagramPacket(message,message.length,host,serverPort);
-            socket.send(request);
-            byte[] buffer = new byte[500];
-            DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
-            socket.receive(reply);
-            reply_msg = new String(reply.getData());
-            //UDP String side effect being fixed
-            String[] temp = reply_msg.split("@");
-            reply_msg=temp[0];
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        return reply_msg;
     }
 }
