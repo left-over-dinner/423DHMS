@@ -114,8 +114,12 @@ public class Sequencer {
     private void multicast(byte[] message){
         try{
             System.out.println("[Sequencer] Sending Transaction to DHMS");
-            DatagramPacket request = new DatagramPacket(message,message.length, InetAddress.getByName(groupAddress),serverPort);
+            /*DatagramPacket request = new DatagramPacket(message,message.length, InetAddress.getByName(groupAddress),serverPort);
             multiSocket.send(request);
+             */
+            DatagramPacket request = new DatagramPacket(message, message.length, InetAddress.getByName("192.168.43.172"),2001);
+            DatagramSocket internalPort = new DatagramSocket(5001);
+            internalPort.send(request);
             System.out.println("[Sequencer] Transaction Sent");
         }catch(Exception e){
             e.printStackTrace();
