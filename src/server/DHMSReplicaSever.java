@@ -50,9 +50,14 @@ public class DHMSReplicaSever extends Thread {
         transactionHandler.start();
         try{
             while(true){
+                /*
                 DatagramPacket request = new DatagramPacket(buffer_in, buffer_in.length, groupAddress, port);
                 multicastSocket.receive(request);
+                */
+                DatagramPacket request = new DatagramPacket(buffer_in, buffer_in.length, groupAddress, port);
                 dhmsRequest = DHMSRequest.decodeStreamAsDHMSRequest(buffer_in);
+                DatagramSocket internalPort = new DatagramSocket(2001);
+                internalPort.receive(request);
                 //for testing purpose only, to test the recovery
                 if(dhmsRequest.simulateFailure){
                     //fail corresponding replica
