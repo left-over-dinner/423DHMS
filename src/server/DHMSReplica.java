@@ -43,7 +43,7 @@ public class DHMSReplica implements Serializable,DHMSReplicaInterface{
     @Override
     public String bookAppointment(String patientID, String appointmentID, String appointmentType) {
         String appts = getAllHospScheduleRaw(patientID);
-        return determineHospital(patientID).bookAppointment(patientID,appts,appointmentID,appointmentType);
+        return determineHospital(appointmentID).bookAppointment(patientID,appts,appointmentID,appointmentType);
     }
     @Override
     public String getAppointmentSchedule(String patientID) {
@@ -51,12 +51,12 @@ public class DHMSReplica implements Serializable,DHMSReplicaInterface{
     }
     @Override
     public String cancelAppointment(String patientID, String appointmentID) {
-        return determineHospital(patientID).cancelAppointment(patientID,appointmentID);
+        return determineHospital(appointmentID).cancelAppointment(patientID,appointmentID);
     }
     @Override
     public String swapAppointment(String patientID, String oldAppointmentID, String oldAppointmentType, String newAppointmentID, String newAppointmentType) {
         String appts = getAllHospScheduleRaw(patientID);
-        return determineHospital(patientID).swapAppointment(patientID,appts,oldAppointmentID,oldAppointmentType,newAppointmentID, newAppointmentType);
+        return determineHospital(oldAppointmentID).swapAppointment(patientID,appts,oldAppointmentID,oldAppointmentType,newAppointmentID, newAppointmentType);
     }
     public String getAllHospSchedule(String patientID){
         String result = MTLHosp.getAppointmentSchedule(patientID);
