@@ -7,14 +7,13 @@ import java.io.ObjectOutputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.MulticastSocket;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class DHMSReplicaSever extends Thread {
     private byte[] buffer_in;
-    private DatagramSocket datagramSocket;
-    private int port;
+    private DatagramSocket multicastSocket;
+    private int multicastPort;
     private SequencerProcessor sequencerProcessor = new SequencerProcessor();
     private volatile DHMSReplica replica;
     private volatile int replicaId;
@@ -30,10 +29,10 @@ public class DHMSReplicaSever extends Thread {
             this.failure=false;
             this.agreedMaxIdentifier=1;
             this.replicaId=id;
-            this.port = 3434;
+            this.multicastPort = 3434;
             this.internalPort=5656;
             buffer_in = new byte[10000];
-            datagramSocket = new DatagramSocket(port);
+            multicastSocket = new DatagramSocket(multicastPort);
             internalSocket = new DatagramSocket(internalPort);
             replica = new DHMSReplica();
             transactionHandler = new TransactionHandler();
@@ -46,8 +45,8 @@ public class DHMSReplicaSever extends Thread {
         transactionHandler.start();
         try{
             while(true){
-                DatagramPacket request = new DatagramPacket(buffer_in, buffer_in.length, port);
-                datagramSocket.receive(request);
+                DatagramPacket request = new DatagramPacket(buffer_in, buffer_in.length);
+                multicastSocket.receive(request);
                 dhmsRequest = DHMSRequest.decodeStreamAsDHMSRequest(buffer_in);
                 //for testing purpose only, to test the recovery
                 if(dhmsRequest.simulateFailure){
