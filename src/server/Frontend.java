@@ -5,7 +5,7 @@ import hospitalModule.HospitalPOA;
 public class Frontend extends HospitalPOA {
     private Sequencer sequencer;
     public Frontend(){
-        sequencer = new Sequencer(1234, 1235);
+        sequencer = new Sequencer();
     }
     @Override
     public synchronized String addAppointment(String appointmentID, String appointmentType, int capacity) {

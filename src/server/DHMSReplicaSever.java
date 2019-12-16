@@ -71,6 +71,7 @@ public class DHMSReplicaSever extends Thread {
                 //proceed with DHMS transactions (addAppointment, removeAppointment, etc)
                 else{
                     sequencerProcessor.setTransactionId(++agreedMaxIdentifier);
+                    dhmsRequest.inetAddress = request.getAddress();
                     transactionHandler.add(dhmsRequest);
                 }
             }
@@ -112,7 +113,6 @@ public class DHMSReplicaSever extends Thread {
         private volatile PriorityQueue<DHMSRequest> transactionQ;
         private Comparator<DHMSRequest> comparator;
         private volatile DatagramSocket replySocket;
-        private volatile InetAddress host;
         public TransactionHandler(){
             comparator = new Comparator<DHMSRequest>() {
                 @Override
@@ -137,12 +137,12 @@ public class DHMSReplicaSever extends Thread {
             System.out.println(transactionQ.size());
         }
         public void run(){
-            System.out.println("INSIDERUNNING");
+            System.out.println("Listening for new transaction");
             while(true){
                 //System.out.println(this.transactionQ.size());
                 if(!failure && this.transactionQ.size()>0){
                     DHMSRequest request = (DHMSRequest) this.transactionQ.poll();
-                    System.out.println("[Transaction Handler] New Request Received From Port "+request.replyPort);
+                    System.out.println("[Transaction Handler] New Request Received From "+request.inetAddress.getHostAddress()+"/"+request.replyPort);
                     String result ="";
                     if(simulateFailure){
                         result = "alkfjhlksdbfjkhl";
@@ -150,7 +150,7 @@ public class DHMSReplicaSever extends Thread {
                         result = replica.processTransaction(request);
                     }
                     byte[] message = DHMSRequest.encodeStreamAsDHMRequest(new DHMSRequest(replicaId,result));
-                    DatagramPacket reply = new DatagramPacket(message,message.length,host,request.replyPort);
+                    DatagramPacket reply = new DatagramPacket(message,message.length,request.inetAddress,request.replyPort);
                     try{
                         replySocket.send(reply);
                         System.out.println("[Transaction Handler] Sent DHMS System Response");

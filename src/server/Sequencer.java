@@ -1,26 +1,17 @@
 package server;
 
-import javax.xml.crypto.Data;
 import java.net.*;
 
 public class Sequencer {
-    private int serverPort = 3434;
-    private int replyPort;
-    private int replyPortResult;
-    private String groupAddress = "225.4.5.7";
-    private MulticastSocket multiSocket;
-    private DatagramSocket replySocket;
-    private DatagramSocket replySocketResult;
+    private int multicastPort = 3434;
+    private int replyPort = 1234;
+    private DatagramSocket datagramSocket;
     byte[] buffer = new byte[10000];
-    public Sequencer(int replyPort, int replyPortResult){
+    public Sequencer(){
         try{
-            this.replyPort = replyPort;
-            this.replyPortResult = replyPortResult;
-            multiSocket = new MulticastSocket(serverPort);
-            replySocket = new DatagramSocket(replyPort);
-            replySocketResult = new DatagramSocket(replyPortResult);
+            datagramSocket = new DatagramSocket(replyPort);
             //3s timeout
-            replySocketResult.setSoTimeout(3000);
+            datagramSocket.setSoTimeout(3000);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -29,7 +20,7 @@ public class Sequencer {
         int identifier = agreedIdentifier();
         System.out.println("[Sequencer] Agreed Identifier: "+identifier);
         dhmsRequest.transactionId = identifier;
-        dhmsRequest.replyPort = replyPortResult;
+        dhmsRequest.replyPort = replyPort;
         sendAgreedTransaction(dhmsRequest);
         String agreedResponse = agreedResponse();
         return agreedResponse;
@@ -42,7 +33,7 @@ public class Sequencer {
         try{
             for(int i = 0; i<3;i++){
                 DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
-                replySocketResult.receive(reply);
+                datagramSocket.receive(reply);
                 DHMSRequest response = DHMSRequest.decodeStreamAsDHMSRequest(buffer);
                 results[response.RMId-1]=response.message;
             }
@@ -102,7 +93,7 @@ public class Sequencer {
             System.out.println("[Sequencer] Waiting to receive identifiers");
             for(int i = 0; i<3;i++){
                 DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
-                replySocket.receive(reply);
+                datagramSocket.receive(reply);
                 DHMSRequest response = DHMSRequest.decodeStreamAsDHMSRequest(buffer);
                 if(maxIdentifier<response.transactionId) maxIdentifier=response.transactionId;
             }
@@ -114,8 +105,12 @@ public class Sequencer {
     private void multicast(byte[] message){
         try{
             System.out.println("[Sequencer] Sending Transaction to DHMS");
-            DatagramPacket request = new DatagramPacket(message,message.length, InetAddress.getByName(groupAddress),serverPort);
-            multiSocket.send(request);
+            DatagramPacket requestA = new DatagramPacket(message,message.length, InetAddress.getByName("192.168.1.9"), multicastPort);
+            DatagramPacket requestB = new DatagramPacket(message,message.length, InetAddress.getByName("192.168.1.12"), multicastPort);
+            DatagramPacket requestC = new DatagramPacket(message,message.length, InetAddress.getByName("192.168.1.13"), multicastPort);
+            datagramSocket.send(requestA);
+            datagramSocket.send(requestB);
+            datagramSocket.send(requestC);
             System.out.println("[Sequencer] Transaction Sent");
         }catch(Exception e){
             e.printStackTrace();

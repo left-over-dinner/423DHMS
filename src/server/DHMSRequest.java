@@ -1,6 +1,7 @@
 package server;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.util.Comparator;
 
 public class DHMSRequest implements Serializable {
@@ -19,6 +20,7 @@ public class DHMSRequest implements Serializable {
     public int RMId;
     public String message;
     public boolean isFailure = false;
+    public InetAddress inetAddress = null;
     public DHMSRequest(){}
     public DHMSRequest(int replyPort){
         this.replyPort = replyPort;
