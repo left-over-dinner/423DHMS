@@ -26,11 +26,11 @@ public class SequencerProcessor {
     public void setTransactionId(int id){
         transactionId=id;
     }
-    public void sendTransactionId(int replyPort, int agreedMaxIdentifier){
+    public void sendTransactionId(DatagramPacket request, int replyPort, int agreedMaxIdentifier){
         try{
             System.out.println("[SequencerListener] New Request Received From Port "+replyPort);
             byte[] message = DHMSRequest.encodeStreamAsDHMRequest( new DHMSRequest(-1, Math.max(agreedMaxIdentifier,transactionId)+1));
-            DatagramPacket reply = new DatagramPacket(message,message.length,host,replyPort);
+            DatagramPacket reply = new DatagramPacket(message,message.length,request.getAddress(),replyPort);
             replySocket.send(reply);
             System.out.println("[SequencerListener] Sent New Transaction ID");
         }catch (Exception e){

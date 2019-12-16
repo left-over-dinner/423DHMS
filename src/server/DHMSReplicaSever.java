@@ -13,8 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class DHMSReplicaSever extends Thread {
     private byte[] buffer_in;
-    private MulticastSocket multicastSocket;
-    private InetAddress groupAddress;
+    private DatagramSocket datagramSocket;
     private int port;
     private SequencerProcessor sequencerProcessor = new SequencerProcessor();
     private volatile DHMSReplica replica;
@@ -26,19 +25,16 @@ public class DHMSReplicaSever extends Thread {
     private InetAddress host;
     private DatagramSocket internalSocket;
     private volatile boolean simulateFailure=false;
-    public DHMSReplicaSever(int id, int internalPort){
+    public DHMSReplicaSever(int id){
         try{
             this.failure=false;
-            this.internalPort=internalPort;
             this.agreedMaxIdentifier=1;
             this.replicaId=id;
             this.port = 3434;
+            this.internalPort=5656;
             buffer_in = new byte[10000];
-            multicastSocket = new MulticastSocket(3434);
-            host=InetAddress.getByName("localhost");
+            datagramSocket = new DatagramSocket(port);
             internalSocket = new DatagramSocket(internalPort);
-            groupAddress = InetAddress.getByName("225.4.5.7");
-            multicastSocket.joinGroup(groupAddress);
             replica = new DHMSReplica();
             transactionHandler = new TransactionHandler();
         }catch(Exception e){
@@ -50,14 +46,9 @@ public class DHMSReplicaSever extends Thread {
         transactionHandler.start();
         try{
             while(true){
-                /*
-                DatagramPacket request = new DatagramPacket(buffer_in, buffer_in.length, groupAddress, port);
-                multicastSocket.receive(request);
-                */
-                DatagramPacket request = new DatagramPacket(buffer_in, buffer_in.length, groupAddress, port);
+                DatagramPacket request = new DatagramPacket(buffer_in, buffer_in.length, port);
+                datagramSocket.receive(request);
                 dhmsRequest = DHMSRequest.decodeStreamAsDHMSRequest(buffer_in);
-                DatagramSocket internalPort = new DatagramSocket(2001);
-                internalPort.receive(request);
                 //for testing purpose only, to test the recovery
                 if(dhmsRequest.simulateFailure){
                     //fail corresponding replica
@@ -69,7 +60,7 @@ public class DHMSReplicaSever extends Thread {
                 }
                 //Sequencer request for identifier
                 else if(dhmsRequest.isSequenceRequest){
-                    sequencerProcessor.sendTransactionId(dhmsRequest.replyPort, agreedMaxIdentifier);
+                    sequencerProcessor.sendTransactionId(request, dhmsRequest.replyPort, agreedMaxIdentifier);
                 }
                 //this replica has failed a result which was previously sent
                 //stop transaction queue, and do recovery
