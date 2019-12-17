@@ -21,7 +21,6 @@ public class DHMSReplicaSever extends Thread {
     private TransactionHandler transactionHandler;
     private int internalPort;
     private volatile boolean failure;
-    private InetAddress host;
     private DatagramSocket internalSocket;
     private volatile boolean simulateFailure=false;
     public DHMSReplicaSever(int id){
@@ -84,7 +83,7 @@ public class DHMSReplicaSever extends Thread {
         try{
             if(dhmsRequest.RMId==replicaId){
                 System.out.println("Failure for RM "+replicaId+", waiting to receive recovery");
-                DatagramPacket request = new DatagramPacket(buffer, buffer.length, host, internalPort);
+                DatagramPacket request = new DatagramPacket(buffer, buffer.length, internalPort);
                 internalSocket.receive(request);
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buffer);
                 ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
@@ -101,7 +100,7 @@ public class DHMSReplicaSever extends Thread {
                 oo.writeObject(replica);
                 oo.close();
                 byte[] message = byteArrayOutputStream.toByteArray();
-                DatagramPacket request = new DatagramPacket(message, message.length, host, (2000+dhmsRequest.RMId));
+                DatagramPacket request = new DatagramPacket(message, message.length, InetAddress.getByName(ENV.getIpById(dhmsRequest.RMId)), internalPort);
                 internalSocket.send(request);
                 System.out.println("Recovery for RM "+dhmsRequest.RMId+ " sent");
             }
@@ -126,7 +125,7 @@ public class DHMSReplicaSever extends Thread {
             transactionQ = new PriorityQueue<>(comparator);
             try{
                 replySocket = new DatagramSocket();
-                host = InetAddress.getByName("localhost");
+                //host = InetAddress.getByName("localhost");
             }catch(Exception e){
 
             }
@@ -137,7 +136,7 @@ public class DHMSReplicaSever extends Thread {
             System.out.println(transactionQ.size());
         }
         public void run(){
-            System.out.println("Listening for new transaction");
+            System.out.println("RM id "+replicaId+": listening for new transaction");
             while(true){
                 //System.out.println(this.transactionQ.size());
                 if(!failure && this.transactionQ.size()>0){

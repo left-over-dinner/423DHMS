@@ -12,7 +12,6 @@ public class DHMSDriver {
         //generate sample appointments for for following two weeks
         //createSampleAppointments();
         runDHMS();
-
     }
     private static void runDHMS(){
         Scanner scanner = new Scanner(System.in);
