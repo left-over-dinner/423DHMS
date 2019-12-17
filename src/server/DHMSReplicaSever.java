@@ -83,7 +83,7 @@ public class DHMSReplicaSever extends Thread {
         try{
             if(dhmsRequest.RMId==replicaId){
                 System.out.println("Failure for RM "+replicaId+", waiting to receive recovery");
-                DatagramPacket request = new DatagramPacket(buffer, buffer.length, internalPort);
+                DatagramPacket request = new DatagramPacket(buffer, buffer.length);
                 internalSocket.receive(request);
                 ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(buffer);
                 ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
