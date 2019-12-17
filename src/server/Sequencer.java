@@ -105,9 +105,9 @@ public class Sequencer {
     private void multicast(byte[] message){
         try{
             System.out.println("[Sequencer] Sending Transaction to DHMS");
-            DatagramPacket requestA = new DatagramPacket(message,message.length, InetAddress.getByName("192.168.1.9"), multicastPort);
-            DatagramPacket requestB = new DatagramPacket(message,message.length, InetAddress.getByName("192.168.1.12"), multicastPort);
-            DatagramPacket requestC = new DatagramPacket(message,message.length, InetAddress.getByName("192.168.1.13"), multicastPort);
+            DatagramPacket requestA = new DatagramPacket(message,message.length, InetAddress.getByName(ENV.getIpById(1)), multicastPort);
+            DatagramPacket requestB = new DatagramPacket(message,message.length, InetAddress.getByName(ENV.getIpById(2)), multicastPort);
+            DatagramPacket requestC = new DatagramPacket(message,message.length, InetAddress.getByName(ENV.getIpById(3)), multicastPort);
             datagramSocket.send(requestA);
             datagramSocket.send(requestB);
             datagramSocket.send(requestC);
