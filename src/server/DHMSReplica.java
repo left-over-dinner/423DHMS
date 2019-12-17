@@ -55,8 +55,8 @@ public class DHMSReplica implements Serializable,DHMSReplicaInterface{
     }
     @Override
     public String swapAppointment(String patientID, String oldAppointmentID, String oldAppointmentType, String newAppointmentID, String newAppointmentType) {
-        String appts = getAllHospScheduleRaw(patientID);
         String resultCancel = determineHospital(oldAppointmentID).cancelAppointment(patientID,oldAppointmentID);
+        String appts = getAllHospScheduleRaw(patientID);
         String resultBook = determineHospital(newAppointmentID).bookAppointment(patientID, appts, newAppointmentID,newAppointmentType);
         if (resultCancel.equals("true") && resultBook.equals("true")){
             return "true";
