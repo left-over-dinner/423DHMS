@@ -1,24 +1,13 @@
-Sun Dec 15 12:01:36 EST 2019: HELLO
-Sun Dec 15 12:01:52 EST 2019: SENDING REQUEST: bookAppointment(MTLP1234,QUEA151119,Physician) by MTLP1234
-Sun Dec 15 12:01:52 EST 2019: SERVER RESULT RESPONSE: true
+Tue Dec 17 08:55:15 EST 2019: HELLO
+Tue Dec 17 08:55:37 EST 2019: SENDING REQUEST: bookAppointment(MTLP1234,MTLE121019,Surgeon) by MTLP1234
+Tue Dec 17 08:55:37 EST 2019: SERVER RESULT RESPONSE: true
 
-Sun Dec 15 12:01:57 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
-Sun Dec 15 12:01:57 EST 2019: SERVER RESULT RESPONSE: 
-Sun Dec 15 12:01:57 EST 2019: Surgeon Appointment(s): []
-Sun Dec 15 12:01:57 EST 2019: Dental Appointment(s): []
-Sun Dec 15 12:01:57 EST 2019: Physician Appointment(s): [QUEA151119]
+Tue Dec 17 08:55:46 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
+Tue Dec 17 08:55:46 EST 2019: SERVER RESULT RESPONSE: 
+Tue Dec 17 08:55:46 EST 2019: Surgeon Appointment(s): [MTLE121019]
+Tue Dec 17 08:55:46 EST 2019: Dental Appointment(s): []
+Tue Dec 17 08:55:46 EST 2019: Physician Appointment(s): []
 
-Sun Dec 15 12:02:47 EST 2019: SENDING REQUEST: swapAppointment (MTLP1234, QUEA151119, Physician, SHEE051019, Surgeon) by MTLP1234
-Sun Dec 15 12:02:47 EST 2019: SERVER RESULT RESPONSE: false, new appointment does not exists or is already full
-
-Sun Dec 15 12:03:24 EST 2019: HELLO
-Sun Dec 15 12:03:44 EST 2019: SENDING REQUEST: removeAppointment(SHEE051019,Surgeon) by SHEA1234
-Sun Dec 15 12:03:44 EST 2019: SERVER RESULT RESPONSE: true
-
-Sun Dec 15 12:04:01 EST 2019: HELLO
-Sun Dec 15 12:04:06 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
-Sun Dec 15 12:04:06 EST 2019: SERVER RESULT RESPONSE: 
-Sun Dec 15 12:04:06 EST 2019: Surgeon Appointment(s): []
-Sun Dec 15 12:04:06 EST 2019: Dental Appointment(s): []
-Sun Dec 15 12:04:06 EST 2019: Physician Appointment(s): [QUEA151119]
+Tue Dec 17 08:56:21 EST 2019: SENDING REQUEST: swapAppointment (MTLP1234, MTLE121019, Surgeon, QUEE121019, Dental) by MTLP1234
+Tue Dec 17 08:56:21 EST 2019: SERVER RESULT RESPONSE: false, new appointment does not exists or is already full
 
