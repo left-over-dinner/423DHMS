@@ -11,7 +11,7 @@ public class FailureSimulation {
         try{
             DHMSRequest failureTest = new DHMSRequest();
             failureTest.simulateFailure=true;
-            failureTest.RMId=1;
+            failureTest.RMId=2;
             byte[] serializedMessage = DHMSRequest.encodeStreamAsDHMRequest(failureTest);
             DatagramSocket socket = new DatagramSocket();
             byte[] message = serializedMessage;

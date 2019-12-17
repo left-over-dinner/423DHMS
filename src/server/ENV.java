@@ -5,9 +5,9 @@ public class ENV {
     //b
     //c
     public static String[] ips = {
-            "192.168.43.127",
-            "192.168.43.55",
-            "192.168.43.118"
+            "172.20.10.3",
+            "172.20.10.11",
+            "172.20.10.2"
     };
     public static String getIpById(int id){
         return ips[id-1];

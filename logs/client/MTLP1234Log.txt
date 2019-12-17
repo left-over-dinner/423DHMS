@@ -1,28 +1,34 @@
-Tue Dec 17 09:09:28 EST 2019: HELLO
-Tue Dec 17 09:09:58 EST 2019: SENDING REQUEST: bookAppointment(MTLP1234,MTLEE121019,Surgeon) by MTLP1234
-Tue Dec 17 09:09:58 EST 2019: SERVER RESULT RESPONSE: false, appointment does not exists
+Tue Dec 17 11:18:07 EST 2019: HELLO
+Tue Dec 17 11:18:17 EST 2019: SENDING REQUEST: bookAppointment(MTLP1234,MTLEE121019,Surgeon) by MTLP1234
+Tue Dec 17 11:18:17 EST 2019: SERVER RESULT RESPONSE: false, appointment does not exists
 
-Tue Dec 17 09:10:37 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
-Tue Dec 17 09:10:37 EST 2019: SERVER RESULT RESPONSE: 
-Tue Dec 17 09:10:37 EST 2019: Surgeon Appointment(s): []
-Tue Dec 17 09:10:37 EST 2019: Dental Appointment(s): []
-Tue Dec 17 09:10:37 EST 2019: Physician Appointment(s): []
+Tue Dec 17 11:18:57 EST 2019: SENDING REQUEST: bookAppointment(MTLP1234,MTLE121019,Surgeon) by MTLP1234
+Tue Dec 17 11:18:57 EST 2019: SERVER RESULT RESPONSE: true
 
-Tue Dec 17 09:10:51 EST 2019: SENDING REQUEST: bookAppointment(MTLP1234,MTLE121019,Surgeon) by MTLP1234
-Tue Dec 17 09:10:51 EST 2019: SERVER RESULT RESPONSE: true
+Tue Dec 17 11:19:02 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
+Tue Dec 17 11:19:02 EST 2019: SERVER RESULT RESPONSE: 
+Tue Dec 17 11:19:02 EST 2019: Surgeon Appointment(s): [MTLE121019]
+Tue Dec 17 11:19:02 EST 2019: Dental Appointment(s): []
+Tue Dec 17 11:19:02 EST 2019: Physician Appointment(s): []
 
-Tue Dec 17 09:10:55 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
-Tue Dec 17 09:10:55 EST 2019: SERVER RESULT RESPONSE: 
-Tue Dec 17 09:10:55 EST 2019: Surgeon Appointment(s): [MTLE121019]
-Tue Dec 17 09:10:55 EST 2019: Dental Appointment(s): []
-Tue Dec 17 09:10:55 EST 2019: Physician Appointment(s): []
+Tue Dec 17 11:20:22 EST 2019: SENDING REQUEST: swapAppointment (MTLP1234, MTLE121019, Surgeon, QUEE121019, Dental) by MTLP1234
+Tue Dec 17 11:20:22 EST 2019: SERVER RESULT RESPONSE: true
 
-Tue Dec 17 09:11:30 EST 2019: SENDING REQUEST: swapAppointment (MTLP1234, MTLE121019, Surgeon, QUEE121019, Dental) by MTLP1234
-Tue Dec 17 09:11:30 EST 2019: SERVER RESULT RESPONSE: true
+Tue Dec 17 11:20:32 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
+Tue Dec 17 11:20:32 EST 2019: SERVER RESULT RESPONSE: 
+Tue Dec 17 11:20:32 EST 2019: Surgeon Appointment(s): []
+Tue Dec 17 11:20:32 EST 2019: Dental Appointment(s): [QUEE121019]
+Tue Dec 17 11:20:32 EST 2019: Physician Appointment(s): []
 
-Tue Dec 17 09:11:42 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
-Tue Dec 17 09:11:42 EST 2019: SERVER RESULT RESPONSE: 
-Tue Dec 17 09:11:42 EST 2019: Surgeon Appointment(s): []
-Tue Dec 17 09:11:42 EST 2019: Dental Appointment(s): [QUEE121019]
-Tue Dec 17 09:11:42 EST 2019: Physician Appointment(s): []
+Tue Dec 17 11:20:40 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
+Tue Dec 17 11:20:40 EST 2019: SERVER RESULT RESPONSE: 
+Tue Dec 17 11:20:40 EST 2019: Surgeon Appointment(s): []
+Tue Dec 17 11:20:40 EST 2019: Dental Appointment(s): [QUEE121019]
+Tue Dec 17 11:20:40 EST 2019: Physician Appointment(s): []
+
+Tue Dec 17 11:26:14 EST 2019: SENDING REQUEST: getAppointmentSchedule(MTLP1234) by MTLP1234
+Tue Dec 17 11:26:14 EST 2019: SERVER RESULT RESPONSE: 
+Tue Dec 17 11:26:14 EST 2019: Surgeon Appointment(s): []
+Tue Dec 17 11:26:14 EST 2019: Dental Appointment(s): [QUEE121019]
+Tue Dec 17 11:26:14 EST 2019: Physician Appointment(s): []
 
